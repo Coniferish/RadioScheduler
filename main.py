@@ -15,17 +15,18 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
     client_id=SPOTIPY_CLIENT_ID,
     client_secret=SPOTIPY_CLIENT_SECRET,
     redirect_uri=SPOTIPY_REDIRECT_URI,
-    scope="user-library-read"))
+    scope="user-library-read streaming user-read-playback-state"))
 
-# import ipdb; ipdb.set_trace()
-playlists = sp.user_playlists('spotify')
-while playlists:
-    for i, playlist in enumerate(playlists['items']):
-        print("%4d %s %s" % (i + 1 + playlists['offset'],   playlist['uri'],  playlist['name']))
-    if playlists['next']:
-        playlists = sp.next(playlists)
-    else:
-        playlists = None
+import ipdb; ipdb.set_trace()
+sp.current_user_playing_track()
+# playlists = sp.user_playlists('spotify')
+# while playlists:
+#     for i, playlist in enumerate(playlists['items']):
+#         print("%4d %s %s" % (i + 1 + playlists['offset'],   playlist['uri'],  playlist['name']))
+#     if playlists['next']:
+#         playlists = sp.next(playlists)
+#     else:
+#         playlists = None
 
 
 
